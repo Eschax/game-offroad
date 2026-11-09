@@ -8,13 +8,17 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Low Range: Offroad 4x4"
 config/description="Technical 4x4 Offroad Trail Simulation with Active Suspension & Realistic Mud/Rock Physics."
 config/version="1.0.0"
 run/main_scene="res://scenes/MainMenu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus", "Mobile")
+config/features=PackedStringArray("4.7", "Forward Plus", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,22 +29,19 @@ GameManager="*res://scripts/core/GameManager.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=0
-window/size/resizable=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=5
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+3d/default_gravity=9.82
 
 [rendering]
 
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_3d=2
 lights_and_shadows/directional_shadow/size=2048
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=2
-
-[physics]
-
-3d/default_gravity=9.82
-3d/physics_engine="GodotPhysics3D"
+anti_aliasing/quality/msaa_3d=2

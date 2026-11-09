@@ -93,3 +93,4 @@ func update_hud_display():
 	var fuel_label = hud.get_node_or_null("Control/TopBar/FuelLabel")
 	if fuel_label and vehicle:
 		fuel_label.text = "BBM: " + str(round(vehicle.fuel)) + "%"
+

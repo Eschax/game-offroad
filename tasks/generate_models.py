@@ -164,3 +164,4 @@ def create_rubicon_glb(output_path):
 if __name__ == "__main__":
     create_rubicon_glb("godot_project/assets/models/jeep_rubicon.glb")
     create_rubicon_glb("public/models/jeep_rubicon.glb")
+

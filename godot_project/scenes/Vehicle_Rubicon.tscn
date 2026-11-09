@@ -87,3 +87,4 @@ damping_relaxation = 5.5
 [node name="WheelMesh" type="MeshInstance3D" parent="Wheel_RR"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_wheel")
+
