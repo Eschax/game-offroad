@@ -329,3 +329,4 @@ export class VehicleVisualBuilder {
     return wrapper;
   }
 }
+
