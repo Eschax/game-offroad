@@ -9,16 +9,22 @@ export class UIManager {
   private gm: GameManager;
   private onStartPlay: (mapId: string) => void;
   private onExitToMenu: () => void;
+  private onToggleCamera: () => void;
+  private onResetCheckpoint: () => void;
 
   constructor(
     container: HTMLElement,
     onStartPlay: (mapId: string) => void,
-    onExitToMenu: () => void
+    onExitToMenu: () => void,
+    onToggleCamera: () => void,
+    onResetCheckpoint: () => void
   ) {
     this.container = container;
     this.gm = GameManager.getInstance();
     this.onStartPlay = onStartPlay;
     this.onExitToMenu = onExitToMenu;
+    this.onToggleCamera = onToggleCamera;
+    this.onResetCheckpoint = onResetCheckpoint;
   }
 
   public showFirstTimePopup() {
@@ -168,20 +174,29 @@ export class UIManager {
   private renderModsTab(container: HTMLElement) {
     const selId = this.gm.data.selected_vehicle_id;
     const v = this.gm.vehicles[selId] || Object.values(this.gm.vehicles)[0];
+    const mods = this.gm.data.vehicle_mods[selId] || { lift_kit: 0, tires_tier: 1, has_winch: true, has_snorkel: false };
 
     container.innerHTML = `
       <h2 style="font-size: 18px; margin-bottom: 14px;">GARASI MODIFIKASI: ${v?.name}</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
         <div class="option-btn">
-          <strong>Suspensi Lift Kit (+5 cm Ground Clearance)</strong>
-          <span>Menaikkan batas suspensi agar tidak tersangkut di batu besar.</span>
-          <button class="primary" style="margin-top: 10px;" onclick="alert('Lift Kit telah terpasang!')">PASANG (GRATIS)</button>
+          <strong>Snorkel Offroad (Cegah Mesin Mati di Sungai)</strong>
+          <span>Menghisap udara di atas kabin agar mesin tidak mati saat banjir.</span>
+          <button class="primary" id="btn-toggle-snorkel" style="margin-top: 10px;">
+            ${mods.has_snorkel ? '✓ TERPASANG (AKTIF)' : 'PASANG SNORKEL'}
+          </button>
         </div>
 
         <div class="option-btn">
-          <strong>Ban Mud Terrain 35-inch (Air-Down Ready)</strong>
-          <span>Grip ekstra +25% di lumpur dan salju saat tekanan angin dikurangi.</span>
-          <button class="primary" style="margin-top: 10px;" onclick="alert('Ban Offroad terpasang!')">PASANG (GRATIS)</button>
+          <strong>Suspensi Lift Kit (+5 cm Ground Clearance)</strong>
+          <span>Menaikkan bodi dan per suspensi agar tidak tersangkut di batu.</span>
+          <span style="color: #10b981; font-weight: bold; margin-top: 6px;">✓ SUDAH TERPASANG</span>
+        </div>
+
+        <div class="option-btn">
+          <strong>Ban Mud-Terrain Beadlock (Air-Down Ready)</strong>
+          <span>Grip ekstra di medan lumpur dan salju saat PSI ban dikurangi.</span>
+          <span style="color: #10b981; font-weight: bold; margin-top: 6px;">✓ SUDAH TERPASANG</span>
         </div>
 
         <div class="option-btn">
@@ -191,6 +206,13 @@ export class UIManager {
         </div>
       </div>
     `;
+
+    document.getElementById('btn-toggle-snorkel')?.addEventListener('click', () => {
+      mods.has_snorkel = !mods.has_snorkel;
+      this.gm.data.vehicle_mods[selId] = mods;
+      this.gm.saveData();
+      this.renderModsTab(container);
+    });
   }
 
   private renderShopTab(container: HTMLElement) {
@@ -292,15 +314,20 @@ export class UIManager {
       <div class="hud-container">
         <!-- Top Bar -->
         <div class="hud-top-bar interactive">
-          <button id="btn-back-menu" style="padding: 6px 14px; font-size: 13px;">⬅ MENU</button>
           <div style="display: flex; gap: 8px;">
+            <button id="btn-back-menu" style="padding: 6px 14px; font-size: 13px;">⬅ MENU</button>
+            <button id="btn-cam-view" style="padding: 6px 14px; font-size: 13px;">📷 CAM</button>
+            <button id="btn-reset-pos" style="padding: 6px 14px; font-size: 13px;">↺ RESPAWN</button>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="stat-pill" id="hud-inclinometer">📐 P: 0° | R: 0°</div>
             <div class="stat-pill" id="hud-fuel-pill">⛽ BBM: 100%</div>
             <div class="stat-pill" id="hud-speed-pill">0 KM/H</div>
           </div>
         </div>
 
         <!-- Middle Suspensions Active Controls -->
-        <div style="position: absolute; right: 16px; top: 80px; display: flex; flex-direction: column; gap: 8px; pointer-events: auto;">
+        <div style="position: absolute; right: 16px; top: 75px; display: flex; flex-direction: column; gap: 8px; pointer-events: auto;">
           <div style="background: rgba(15,23,42,0.85); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); text-align: center;">
             <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px; color: var(--primary-accent);">SUSPENSI AKTIF</div>
             <div style="display: flex; flex-direction: column; gap: 6px;">
@@ -310,6 +337,11 @@ export class UIManager {
             </div>
             <button id="btn-toggle-stiff" style="margin-top: 8px; font-size: 11px; padding: 4px 8px; width: 100%;">Mode: SOFT</button>
           </div>
+        </div>
+
+        <!-- Warning Toast for Water Hydrolock -->
+        <div id="hud-warning-toast" style="position: absolute; top: 110px; left: 50%; transform: translateX(-50%); background: rgba(239,68,68,0.9); color: #fff; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 13px; display: none;">
+          ⚠️ PERINGATAN: AIR DALAM! MESIN TERENDAM
         </div>
 
         <!-- Bottom Controls -->
@@ -337,17 +369,19 @@ export class UIManager {
     `;
 
     document.getElementById('btn-back-menu')?.addEventListener('click', () => this.onExitToMenu());
+    document.getElementById('btn-cam-view')?.addEventListener('click', () => this.onToggleCamera());
+    document.getElementById('btn-reset-pos')?.addEventListener('click', () => this.onResetCheckpoint());
 
     // Suspensi Hook
-    document.getElementById('btn-height-high')?.addEventListener('click', (e) => {
+    document.getElementById('btn-height-high')?.addEventListener('click', () => {
       vehicle.setRideHeight('high');
       this.updateHeightBtnState('high');
     });
-    document.getElementById('btn-height-norm')?.addEventListener('click', (e) => {
+    document.getElementById('btn-height-norm')?.addEventListener('click', () => {
       vehicle.setRideHeight('normal');
       this.updateHeightBtnState('normal');
     });
-    document.getElementById('btn-height-low')?.addEventListener('click', (e) => {
+    document.getElementById('btn-height-low')?.addEventListener('click', () => {
       vehicle.setRideHeight('low');
       this.updateHeightBtnState('low');
     });
@@ -499,6 +533,34 @@ export class UIManager {
     if (speedPill) {
       const v = vehicle.chassisBody.velocity.length() * 3.6; // m/s to km/h
       speedPill.innerText = `${Math.round(v)} KM/H`;
+    }
+
+    // Inclinometer calculation
+    const inclPill = document.getElementById('hud-inclinometer');
+    if (inclPill) {
+      const euler = new THREE.Euler().setFromQuaternion(vehicle.mesh.quaternion, 'YXZ');
+      const pitch = Math.round(THREE.MathUtils.radToDeg(euler.x));
+      const roll = Math.round(THREE.MathUtils.radToDeg(euler.z));
+      inclPill.innerText = `📐 P: ${pitch}° | R: ${roll}°`;
+
+      if (Math.abs(roll) > 35 || Math.abs(pitch) > 40) {
+        inclPill.style.color = '#ef4444'; // Red Rollover Warning
+      } else {
+        inclPill.style.color = '#fff';
+      }
+    }
+
+    // Warning Toast
+    const toast = document.getElementById('hud-warning-toast');
+    if (toast) {
+      if (vehicle.waterDepth > 0.4) {
+        toast.style.display = 'block';
+        toast.innerText = vehicle.isEngineFlooded
+          ? '💀 MESIN MATI! TERENDAM AIR TANPA SNORKEL'
+          : `⚠️ AIR DALAM (${(vehicle.waterDepth * 100).toFixed(0)} CM)`;
+      } else {
+        toast.style.display = 'none';
+      }
     }
   }
 }

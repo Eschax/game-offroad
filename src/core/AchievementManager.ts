@@ -71,3 +71,4 @@ export class AchievementManager {
     }, 3500);
   }
 }
+

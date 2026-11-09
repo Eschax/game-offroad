@@ -102,3 +102,4 @@ export class WinchSystem {
     vehicle.chassisBody.applyForce(dir.scale(pullForce), vehicle.chassisBody.position);
   }
 }
+

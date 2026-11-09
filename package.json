@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/Eschax/game-offroad#readme",
   "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
     "cannon-es": "^0.20.0",
     "lucide": "^1.70.0",
     "three": "^0.187.0",

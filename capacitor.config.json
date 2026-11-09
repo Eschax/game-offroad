@@ -1,0 +1,12 @@
+{
+  "appId": "com.lowrange.offroad4x4",
+  "appName": "Low Range Offroad 4x4",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "backgroundColor": "#0f172a",
+    "allowMixedContent": true
+  }
+}
