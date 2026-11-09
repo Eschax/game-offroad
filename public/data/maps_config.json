@@ -1,0 +1,99 @@
+{
+  "maps": [
+    {
+      "id": "map_01_pinewood",
+      "name": "Map 1: Pinewood Gravel Trail",
+      "theme": "gravel_forest",
+      "difficulty": "Easy",
+      "checkpoints_count": 3,
+      "primary_terrain": ["gravel", "fallen_logs"],
+      "reward_coins": 500,
+      "recommended_vehicle": "rubicon",
+      "description": "Jalur hutan santai dengan permukaan kerikil bergelombang dan beberapa rintangan kayu melintang."
+    },
+    {
+      "id": "map_02_swamp",
+      "name": "Map 2: Muddy Swamp Basin",
+      "theme": "deep_mud_swamp",
+      "difficulty": "Medium",
+      "checkpoints_count": 3,
+      "primary_terrain": ["mud", "water_crossing"],
+      "reward_coins": 1000,
+      "recommended_vehicle": "ram",
+      "description": "Rawa berlumpur tebal dan perlintasan sungai air dalam. Wajib lift suspensi tinggi dan siapkan winch!"
+    },
+    {
+      "id": "map_03_frostbite",
+      "name": "Map 3: Frostbite Peak",
+      "theme": "snow_ice_mountain",
+      "difficulty": "Hard",
+      "checkpoints_count": 4,
+      "primary_terrain": ["snow", "ice", "gravel"],
+      "reward_coins": 1500,
+      "recommended_vehicle": "patrol",
+      "description": "Puncak gunung bersalju licin dengan tanjakan terjal es. Wajib kontrol traksi 4H dan kurangi tekanan ban."
+    },
+    {
+      "id": "map_04_devils_canyon",
+      "name": "Map 4: Devil's Canyon Rocks",
+      "theme": "extreme_rock_crawling",
+      "difficulty": "Expert",
+      "checkpoints_count": 4,
+      "primary_terrain": ["rock", "gravel"],
+      "reward_coins": 2000,
+      "recommended_vehicle": "rubicon",
+      "description": "Jalur bebatuan raksasa terjal di bibir jurang. Membutuhkan mode 4L, Diff Lock, dan suspensi empuk maksimal."
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach_first_trail",
+      "title": "First Trail Completed",
+      "description": "Selesaikan Map 1 dengan kendaraan apa saja.",
+      "reward_coins": 500,
+      "target_type": "map_clear",
+      "target_id": "map_01_pinewood"
+    },
+    {
+      "id": "ach_mud_master",
+      "title": "Mud Master",
+      "description": "Selesaikan Muddy Swamp Basin tanpa kehabisan bahan bakar.",
+      "reward_coins": 1000,
+      "target_type": "map_clear_no_out_of_fuel",
+      "target_id": "map_02_swamp"
+    },
+    {
+      "id": "ach_snow_drifter",
+      "title": "Snow Drifter",
+      "description": "Selesaikan Frostbite Peak menggunakan Nissan Patrol atau D-Max.",
+      "reward_coins": 1000,
+      "target_type": "map_clear_vehicle_specific",
+      "target_id": "map_03_frostbite"
+    },
+    {
+      "id": "ach_rock_king",
+      "title": "Rock King",
+      "description": "Selesaikan Devil's Canyon Rocks tanpa pernah terguling (rollover).",
+      "reward_coins": 1500,
+      "target_type": "map_clear_no_rollover",
+      "target_id": "map_04_devils_canyon"
+    },
+    {
+      "id": "ach_winch_helper",
+      "title": "Helping Hand",
+      "description": "Gunakan Winch sebanyak 5 kali untuk menarik kendaraan.",
+      "reward_coins": 500,
+      "target_type": "counter",
+      "target_count": 5
+    },
+    {
+      "id": "ach_full_garage",
+      "title": "Full Garage",
+      "description": "Miliki keempat kendaraan (Rubicon, D-Max, Patrol, RAM).",
+      "reward_coins": 2500,
+      "target_type": "all_vehicles_unlocked",
+      "target_count": 4
+    }
+  ]
+}
+

@@ -1,0 +1,15 @@
+Buatkan saya issue.md yang berisi Game Design Document (GDD) sederhana untuk game Android.
+
+Genre: offro 4x4 seperti game roblox ini https://www.roblox.com/games/88131802740480/Low-Range-Offroad-4x4
+Engine: terbaik dan ringan buat android
+Target pemain: Casual, umur 13+
+
+tujuan dari pembuatan game ini adalah untuk hiburan dan mengisi waktu kosong serta ada juga achievment jika menyelesaikan beberapa map
+core loop gameplaynya itu pertama ada settings, play, multiplayer, mods, dan shop
+kontrolnya menggunakan touch,steer, atau gyro tergantung pilihan yg dipilih saat pertma kali, tapi bisa diganti di pengaturan
+karakter yang digunakan ada jeep rubicon, RAM, dmax, dan nissan patrol
+buat suspensinya bisa interaktif di dalam game (naik turun gitu)
+
+rintangannya ada jalan mud, snow, gravel, rock, 
+tambahin apa aja yg menurut kamu cocok atau sesuai atau juga seperti di game robloxnya
+nanti GDDnya buat dalam instruksi high level karena akan dieksekusi oleh model ai yg lebih murah atau lebih rendah

@@ -1,0 +1,85 @@
+{
+  "vehicles": {
+    "rubicon": {
+      "id": "rubicon",
+      "name": "Jeep Rubicon",
+      "class": "Rock Crawler",
+      "price": 0,
+      "unlocked_by_default": true,
+      "specs": {
+        "mass_kg": 1900,
+        "engine_torque_nm": 400,
+        "max_speed_kmh": 110,
+        "wheelbase_m": 2.45,
+        "fuel_capacity_l": 75,
+        "fuel_consumption_rate": 1.0,
+        "base_ride_height": 0.28,
+        "suspension_travel_m": 0.35,
+        "default_stiffness": 35.0,
+        "default_damping": 4.5
+      },
+      "description": "Wheelbase pendek dan artikulasi suspensi sangat lentur. Pilihan terbaik untuk medan berbatu terjal (Rock Crawling)."
+    },
+    "dmax": {
+      "id": "dmax",
+      "name": "Isuzu D-Max",
+      "class": "Agile Utility Pickup",
+      "price": 2500,
+      "unlocked_by_default": false,
+      "specs": {
+        "mass_kg": 1850,
+        "engine_torque_nm": 360,
+        "max_speed_kmh": 130,
+        "wheelbase_m": 2.85,
+        "fuel_capacity_l": 80,
+        "fuel_consumption_rate": 0.8,
+        "base_ride_height": 0.24,
+        "suspension_travel_m": 0.25,
+        "default_stiffness": 42.0,
+        "default_damping": 5.0
+      },
+      "description": "Pusat gravitasi rendah, lincah, dan sangat hemat bahan bakar. Unggul di jalur kerikil panjang (Gravel)."
+    },
+    "patrol": {
+      "id": "patrol",
+      "name": "Nissan Patrol",
+      "class": "Overland Expedition SUV",
+      "price": 5000,
+      "unlocked_by_default": false,
+      "specs": {
+        "mass_kg": 2400,
+        "engine_torque_nm": 520,
+        "max_speed_kmh": 125,
+        "wheelbase_m": 2.95,
+        "fuel_capacity_l": 100,
+        "fuel_consumption_rate": 1.25,
+        "base_ride_height": 0.26,
+        "suspension_travel_m": 0.30,
+        "default_stiffness": 45.0,
+        "default_damping": 5.5
+      },
+      "description": "Bodi kokoh dan stabil di salju licin atau saat menerjang arus sungai dalam."
+    },
+    "ram": {
+      "id": "ram",
+      "name": "RAM Heavy Duty",
+      "class": "Mud Monster Truck",
+      "price": 8500,
+      "unlocked_by_default": false,
+      "specs": {
+        "mass_kg": 2700,
+        "engine_torque_nm": 650,
+        "max_speed_kmh": 115,
+        "wheelbase_m": 3.40,
+        "fuel_capacity_l": 120,
+        "fuel_consumption_rate": 1.6,
+        "base_ride_height": 0.32,
+        "suspension_travel_m": 0.38,
+        "default_stiffness": 50.0,
+        "default_damping": 6.0
+      },
+      "description": "Torsi mesin raksasa untuk menembus kubangan lumpur pekat dan menderek beban terberat."
+    }
+  }
+}
+

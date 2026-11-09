@@ -1,0 +1,33 @@
+{
+  "name": "buat-games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eschax/game-offroad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Eschax/game-offroad/issues"
+  },
+  "homepage": "https://github.com/Eschax/game-offroad#readme",
+  "dependencies": {
+    "cannon-es": "^0.20.0",
+    "lucide": "^1.70.0",
+    "three": "^0.187.0",
+    "vite": "^8.3.6"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "typescript": "^7.0.2"
+  }
+}
