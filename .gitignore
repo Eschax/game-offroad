@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .idea/
+.godot/
+godot_project/.godot/
+*.uid
 .DS_Store
 *.log
 
